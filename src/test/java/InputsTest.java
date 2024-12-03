@@ -4,14 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import java.time.Duration;
-import java.util.List;
 
 public class InputsTest {
 
@@ -31,13 +28,13 @@ public class InputsTest {
         WebElement inputField = driver.findElement(By.tagName("input"));
         inputField.clear();
         inputField.sendKeys("123");
-        Assert.assertEquals(inputField.getAttribute("value"), "123", "Значение ввода должно быть '123'");// проверяем ввод цифр
+        Assert.assertEquals(inputField.getAttribute("value"), "123");// проверяем ввод цифр
         inputField.clear();
-        inputField.sendKeys("-123");
-        Assert.assertEquals(inputField.getAttribute("value"), "-123", "Значение ввода должно быть '-123'"); // проверяем возможность ввода допустимых символов
+        inputField.sendKeys("-123456");
+        Assert.assertEquals(inputField.getAttribute("value"), "-123456"); // проверяем возможность ввода допустимых символов
         inputField.clear();
-        inputField.sendKeys("123abc");
-        Assert.assertEquals(inputField.getAttribute("value"), "123", "Значение ввода должно быть '123'"); // проверяем, что доступен ввод только числовых значений
+        inputField.sendKeys("abc");
+        Assert.assertEquals(inputField.getAttribute("value"), ""); // проверяем, что доступен ввод только числовых значений
         inputField.clear();
         inputField.sendKeys("1");
         inputField.sendKeys(Keys.ARROW_UP);
