@@ -39,4 +39,3 @@ public class AddRemoveElementsTest {
         driver.quit();
     }
 }
-
